@@ -1,5 +1,7 @@
 server:
   port: 8080
+  servlet:
+    context-path: /timer
 
 spring:
   profiles:
@@ -12,6 +14,32 @@ spring:
       url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
       username: ${sky.datasource.username}
       password: ${sky.datasource.password}
+  mail:
+    # 配置 SMTP 服务器地址
+    host: smtp.qq.com
+    # 发送者邮箱
+    username: 3189471071@qq.com
+    # 配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+    password: blyckbcrmaiqdhdb
+    # 端口号465或587
+#    port: 587
+    port: 587
+
+    protocol: smtp
+    # 默认的邮件编码为UTF-8
+    default-encoding: UTF-8
+    # 配置SSL 加密工厂
+    properties:
+      mail:
+        ssl:
+          enable: true        # 强制启用 SSL
+        auth: true
+        starttls:
+          enable: false       # 禁用 STARTTLS（因已用 SSL）
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+        debug: true
 
 mybatis:
   #mapper配置文件
@@ -37,3 +65,6 @@ sky:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-token-name: Authorization
+    user-secret-key: timer
+    user-ttl: 7200000

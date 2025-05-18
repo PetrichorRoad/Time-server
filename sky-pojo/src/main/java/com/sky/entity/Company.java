@@ -3,7 +3,8 @@ package com.sky.entity;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
+
 @Data
 public class Company implements Serializable {
     private Long id;
@@ -36,12 +37,12 @@ public class Company implements Serializable {
     /**
      * 创建时间（自动填充）
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 最后更新时间（自动填充）
      */
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     // ------------------ 增强功能配置 ------------------
 

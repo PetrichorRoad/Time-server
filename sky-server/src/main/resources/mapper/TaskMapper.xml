@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.TaskMapper">
+
+    <select id="list"  resultType="Task">
+        select * from task
+        <where>
+            <if test="startTime != null">
+                and start_time >= #{startTime}
+            </if>
+            <if test="endTime != null">
+                and end_time <![CDATA[ <= ]]> #{endTime}
+            </if>
+            <if test="departmentId !=null">
+                and department_id = #{departmentId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="createTask">
+        insert into  task
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dto.title != null and dto.title != '' ">title,</if>
+            <if test="dto.content != null and dto.content != '' ">content,</if>
+            <if test="dto.createUser != null and dto.createUser != '' ">create_user,</if>
+            <if test="dto.departmentId != null">department_id,</if>
+            <if test="dto.startTime != null">start_time,</if>
+            <if test="dto.endTime != null">end_time,</if>
+            <if test="dto.teamId != null">team_id,</if>
+            <if test="dto.ownerId != null">owner_id,</if>
+            <if test="dto.parentId != null">parent_id,</if>
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+            <if test="dto.title != null and dto.title != ''">#{dto.title},</if>
+            <if test="dto.content != null and dto.content != ''">#{dto.content},</if>
+            <if test="dto.createUser != null and dto.createUser != ''">#{dto.createUser},</if>
+            <if test="dto.departmentId != null">#{dto.departmentId},</if>
+            <if test="dto.startTime != null">#{dto.startTime},</if>
+            <if test="dto.endTime != null">#{dto.endTime},</if>
+            <if test="dto.teamId != null">#{dto.teamId},</if>
+            <if test="dto.ownerId != null">#{dto.ownerId},</if>
+            <if test="dto.parentId != null">#{dto.parentId},</if>
+        </trim>
+    </insert>
+
+    <update id="updateTask">
+        update task
+        <set>
+            <!-- 仅当字段非空时更新 -->
+            <if test="dto.parentId != null">
+                parent_id = #{dto.parentId},
+            </if>
+            <if test="dto.level != null">
+                level = #{dto.level},
+            </if>
+            <if test="dto.type != null">
+                type = #{dto.type},
+            </if>
+            <if test="dto.status != null">
+                status = #{dto.status},
+            </if>
+            <if test="dto.ownerId != null">
+                owner_id = #{dto.ownerId},
+            </if>
+            <if test="dto.startTime != null">
+                start_time = #{dto.startTime},
+            </if>
+            <if test="dto.endTime != null">
+                end_time = #{dto.endTime},
+            </if>
+            <if test="dto.departmentId != null">
+                department_id = #{dto.departmentId},
+            </if>
+            <if test="dto.teamId != null">
+                team_id = #{dto.teamId},
+            </if>
+            <if test="dto.progress != null">
+                progress = #{dto.progress},
+            </if>
+            <if test="dto.title != null">
+                title = #{dto.title},
+            </if>
+            <if test="dto.content != null">
+                content = #{dto.content},
+            </if>
+        </set>
+        WHERE id = #{dto.id}
+    </update>
+
+
+</mapper>

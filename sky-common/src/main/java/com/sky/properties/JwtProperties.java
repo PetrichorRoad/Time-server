@@ -23,4 +23,10 @@ public class JwtProperties {
     private long userTtl;
     private String userTokenName;
 
+    //员工登录信息
+    private String userAccountId;
+    private String userEmail;
+
+
+
 }

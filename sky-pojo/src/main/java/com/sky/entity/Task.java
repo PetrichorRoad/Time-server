@@ -1,6 +1,7 @@
 package com.sky.entity;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class Task {
@@ -24,11 +25,10 @@ public class Task {
 //    private Employee owner;
     private String ownerId;
 
-    private LocalDateTime startTime;
+    private Date startTime;
 
-    private LocalDateTime endTime;
+    private Date endTime;
 
-    //    private Company company;
     private String companyId;
 
     private Integer departmentId;
@@ -38,7 +38,6 @@ public class Task {
 
     private Integer progress = 0;
 
-    private LocalDateTime createTime;
-
-    private LocalDateTime updateTime;
+    private Date createTime;
+    private Date updateTime;
 }

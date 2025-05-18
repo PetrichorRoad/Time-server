@@ -44,13 +44,13 @@ public class OrganizationController {
             for (Team team : teamList){
                 TeamVo teamVo =TeamVo.builder()
                         .label(team.getName())
-                        .code(team.getId())
+                        .value(team.getId())
                         .build();
                 teamVoList.add(teamVo);
             };
             DepartmentVo departmentVo = DepartmentVo.builder()
                     .label(item.getName())
-                    .code(item.getId())
+                    .value(item.getId())
                     .children(teamVoList)
                     .build();
             departmentVoList.add(departmentVo);
@@ -58,7 +58,7 @@ public class OrganizationController {
 
         OrganizationVo organizationVo = OrganizationVo.builder()
                 .label(company.getName())
-                .code(company.getId())
+                .value(company.getId())
                 .logo(company.getLogo())
                 .description(company.getDescription())
                 .children(departmentVoList)

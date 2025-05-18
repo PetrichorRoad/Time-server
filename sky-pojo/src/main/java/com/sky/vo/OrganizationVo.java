@@ -17,7 +17,7 @@ public class OrganizationVo implements Serializable {
     private String label;
 
     @ApiModelProperty("公司code")
-    private Long code;
+    private Long value;
 
     @ApiModelProperty("公司logo")
     private String logo;

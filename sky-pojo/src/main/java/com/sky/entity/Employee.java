@@ -61,10 +61,6 @@ public class Employee {
      */
     private String mobile;
 
-    /**
-     * 邮箱
-     */
-    private String email;
 
     /**
      * 入职日期

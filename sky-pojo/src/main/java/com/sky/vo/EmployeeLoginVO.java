@@ -20,7 +20,7 @@ public class EmployeeLoginVO implements Serializable {
     private Long id;
 
     @ApiModelProperty("员工ID")
-    private Long employeeId;
+    private String accountId;
 
     @ApiModelProperty("昵称")
     private String nickname;

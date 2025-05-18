@@ -1,6 +1,6 @@
 package com.sky.entity;
 import lombok.Data;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class Team {
@@ -40,13 +40,13 @@ public class Team {
      * 创建时间 (自动填充)
      */
 //    @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新时间 (自动填充)
      */
 //    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private Date updateTime;
 
     // ------------------ 增强功能配置 ------------------
 

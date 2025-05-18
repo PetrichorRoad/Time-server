@@ -17,5 +17,5 @@ public class TeamVo implements Serializable {
     private String label;
 
     @ApiModelProperty("公司code")
-    private Long code;
+    private Long value;
 }
